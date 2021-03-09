@@ -1,15 +1,19 @@
 let Sequelize = require("sequelize");
 
 let db = new Sequelize(
-    "postgres://bfbepbchjdxjpb:ddc9173d918036fcc1512996f012590c7358d685b2019f9c4b4f9e2ff68906ad@ec2-54-196-111-158.compute-1.amazonaws.com:5432/dc2m4eq0n5u965",
+    "postgres://dkhtiuhlixbnxh:ec791416b40dcd02e4a65a2807f6612e100f078565cb0c20289e035634cb0fae@ec2-54-159-175-113.compute-1.amazonaws.com:5432/d1gc0oa31nd9m6",
     {
         dialect: "postgres",
         dialectOptions: {
             ssl: {
                 rejectUnauthorized: false, // very important
             }
+        },
+        define: {
+            freezeTableName: true
         }
-    });
+    }
+);
 
 module.exports = db;
 

@@ -1,5 +1,5 @@
-let {Sequelize, DataTypes} = require("sequelize");
-let db = require("../db");
+const {Sequelize, DataTypes} = require("sequelize");
+const db = require("../db");
 
 const Aluno = db.define("Aluno",
     {
