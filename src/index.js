@@ -6,7 +6,6 @@ async function sincronizar() {
 }
 
 async function inserir() {
-    let curso = await Curso.create({nome:"ADS"})
     let obj = {nome: "Fulano", endereco: "Rua do Fulano"};
     let res = await Aluno.create(obj)
     console.log(res);

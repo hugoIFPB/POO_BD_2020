@@ -27,12 +27,13 @@ async function criarConexao() {
     // await con.query("update aluno set nome = $1 where id = $2", ["Aluno 1", 5]);
     // await con.query("delete from aluno where upper(nome) like 'ALUNO%'");
     // await con.query("delete from aluno");
-    await con.query("drop table aluno");
-    let res = await con.query("select * from aluno");
+    await con.query(``);
+    //let res = await con.query("select * from aluno");
+    /*
     let tuplas = res.rows;
     for(let tupla of tuplas) {
         console.log(tupla);
-    }
+    }*/
     con.release();
 }
 

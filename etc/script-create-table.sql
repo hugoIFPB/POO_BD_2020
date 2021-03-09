@@ -17,7 +17,7 @@ CREATE TABLE Edicao (
     capa varchar,
     id_livro integer,
     CONSTRAINT FK_Edicao_2  FOREIGN KEY (id_livro) REFERENCES Livro (id)
-    ON DELETE RESTRICT;
+    ON DELETE RESTRICT
 );
 
 CREATE TABLE Disciplina (
