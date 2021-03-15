@@ -1,7 +1,9 @@
+
 const {Sequelize, DataTypes} = require("sequelize");
 const db = require("../db");
 
-const Aluno = db.define("Aluno",
+
+const Disciplina = db.define("Disciplina",
     {
         id: {
             type: DataTypes.INTEGER,
@@ -13,8 +15,9 @@ const Aluno = db.define("Aluno",
             type: DataTypes.STRING,
             allowNull: false
         },
-        endereco: DataTypes.STRING
+        codigoSuap: DataTypes.STRING,
+        curso: DataTypes.STRING
     }
 );
 
-module.exports = Aluno;
+module.exports = Disciplina;

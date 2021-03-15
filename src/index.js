@@ -1,21 +1,37 @@
+require('dotenv').config()
+const { Op } = require('sequelize');
 let db = require("./db");
-let Aluno = require("./model/Aluno");
+const Disciplina = require('./model/Disciplina');
+const DisciplinaLivro = require('./model/DisciplinaLivro');
+const Edicao = require('./model/Edicao');
+const Livro = require('./model/Livro');
 
 async function sincronizar() {
     await db.sync({force: true});
 }
 
 async function inserir() {
-    let obj = {nome: "Fulano", endereco: "Rua do Fulano"};
-    let res = await Aluno.create(obj)
-    console.log(res);
+    let livro = {titulo: "Arquitetura PERN", autores: "Fulano"};
+    livro = await Livro.create(livro);
+    Edicao.create({quantidade:5, LivroId: livro.id}); 
+    //console.log(res);
 }
 
 // 
 // inserir(a1);
 
 async function consultar() {
-    let resultado = await Aluno.findAll();
-    console.log(resultado[0]);
+    let ed = await Livro.findOne(
+        {
+            where: {
+                id:{
+                    [Op.eq]:2
+                }
+            }
+        }
+    );
+    console.log((await ed.getEdicoes()));
 }
-sincronizar();
+//sincronizar();
+//inserir();
+consultar();

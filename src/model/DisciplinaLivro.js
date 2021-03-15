@@ -1,20 +1,30 @@
 const {Sequelize, DataTypes} = require("sequelize");
 const db = require("../db");
+const Disciplina = require("./Disciplina");
+const Livro = require("./Livro");
 
-const Aluno = db.define("Aluno",
+const DisciplinaLivro = db.define("DisciplinaLivro",
     {
-        id: {
+        LivroId: {
             type: DataTypes.INTEGER,
-            autoIncrement: true,
-            allowNull: false,
-            primaryKey: true
+            primaryKey: true,
+            references: {
+                model: Livro, 
+                key: 'id'
+            }
         },
-        nome : {
-            type: DataTypes.STRING,
-            allowNull: false
+        DisciplinaId : {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            references: {
+                model: Disciplina, 
+                key: 'id'
+            }
         },
-        endereco: DataTypes.STRING
+        basico: DataTypes.BOOLEAN
     }
 );
 
-module.exports = Aluno;
+Disciplina.belongsToMany(Livro, {through:DisciplinaLivro});
+Livro.belongsToMany(Disciplina, {through:DisciplinaLivro})
+module.exports = DisciplinaLivro;

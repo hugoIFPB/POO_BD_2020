@@ -1,7 +1,8 @@
 const {Sequelize, DataTypes} = require("sequelize");
 const db = require("../db");
+const Livro = require("./Livro");
 
-const Aluno = db.define("Aluno",
+const Edicao = db.define("Edicao",
     {
         id: {
             type: DataTypes.INTEGER,
@@ -9,12 +10,24 @@ const Aluno = db.define("Aluno",
             allowNull: false,
             primaryKey: true
         },
-        nome : {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        endereco: DataTypes.STRING
+        isbn : DataTypes.STRING,
+        numero: DataTypes.STRING,
+        ano: DataTypes.INTEGER,
+        quantidade: DataTypes.INTEGER,
+        cotacao: DataTypes.DOUBLE,
+        capa: DataTypes.STRING,
+        LivroId: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: Livro, 
+                key: 'id'
+            }
+        }
+
     }
 );
 
-module.exports = Aluno;
+Edicao.belongsTo(Livro);
+Livro.hasMany(Edicao, {as:"edicoes"});
+
+module.exports = Edicao;
