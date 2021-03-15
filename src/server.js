@@ -5,7 +5,7 @@ const Livro = require('./model/Livro');
 const app = express();
 
 app.get("/", (req, res) => {
-    res.send("Bom diiiiiiiiaaaaa!!!!")
+    res.send("Valeu!!!!")
 });
 
 app.get("/livro/", async (req, res) => {
