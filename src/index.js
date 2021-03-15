@@ -12,16 +12,16 @@ async function sincronizar() {
 
 async function inserir() {
     let livro = {titulo: "Arquitetura MERN", autores: "Sicrano"};
-    /*
-    Postgres
-    Express
-    React
-    Node
-    */
-    
     livro = await Livro.create(livro);
     Edicao.create({quantidade:3, LivroId: livro.id}); 
-    //console.log(res);
+    livro = await Livro.create({titulo: "Arquitetura PERN", autores: "Fulano"});
+    Edicao.create({quantidade:2, LivroId: livro.id}); 
+    livro = await Livro.create({titulo: "Arquitetura MEAN", autores: "Fulano"});
+    Edicao.create({quantidade:5, LivroId: livro.id}); 
+    livro = await Livro.create({titulo: "Javascript com Node", autores: "Beltrano"});
+    Edicao.create({quantidade:1, LivroId: livro.id}); 
+    livro = await Livro.create({titulo: "React com Hooks", autores: "Sicrano"});
+    Edicao.create({quantidade:2, LivroId: livro.id}); 
 }
 
 // 
@@ -51,4 +51,4 @@ async function consultar() {
 }
 //sincronizar();
 //inserir();
-consultar();
+//consultar();
