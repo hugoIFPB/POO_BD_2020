@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { Op } = require('sequelize');
+const { Op, Model } = require('sequelize');
 let db = require("./db");
 const Disciplina = require('./model/Disciplina');
 const DisciplinaLivro = require('./model/DisciplinaLivro');
@@ -11,9 +11,16 @@ async function sincronizar() {
 }
 
 async function inserir() {
-    let livro = {titulo: "Arquitetura PERN", autores: "Fulano"};
+    let livro = {titulo: "Arquitetura MERN", autores: "Sicrano"};
+    /*
+    Postgres
+    Express
+    React
+    Node
+    */
+    
     livro = await Livro.create(livro);
-    Edicao.create({quantidade:5, LivroId: livro.id}); 
+    Edicao.create({quantidade:3, LivroId: livro.id}); 
     //console.log(res);
 }
 
@@ -21,16 +28,26 @@ async function inserir() {
 // inserir(a1);
 
 async function consultar() {
-    let ed = await Livro.findOne(
+    /*let livros =  await Livro.findAll({
+        where: {
+            titulo: {
+                [Op.like]: "Arquitetura%"
+            }
+        }
+    }
+    );
+    console.log(livros);
+    */
+    let livro = await Livro.findOne(
         {
             where: {
-                id:{
-                    [Op.eq]:2
-                }
+                id:4
             }
         }
     );
-    console.log((await ed.getEdicoes()));
+    //let ed = Edicao.findOne();
+    //ed.getLivro();
+    console.log((await livro.getEdicoes()));
 }
 //sincronizar();
 //inserir();

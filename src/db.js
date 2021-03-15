@@ -1,4 +1,3 @@
-require('dotenv').config();
 let Sequelize = require("sequelize");
 
 let db = new Sequelize(

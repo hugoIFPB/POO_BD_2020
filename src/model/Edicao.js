@@ -23,7 +23,6 @@ const Edicao = db.define("Edicao",
                 key: 'id'
             }
         }
-
     }
 );
 
