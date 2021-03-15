@@ -11,7 +11,7 @@ async function sincronizar() {
 }
 
 async function inserir() {
-    let livro = {titulo: "Arquitetura MERN", autores: "Sicrano"};
+    let livro = {titulo: "Arquitetura PERN", autores: "Sicrano"};
     /*
     Postgres
     Express
