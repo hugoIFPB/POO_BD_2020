@@ -16,13 +16,7 @@ const Edicao = db.define("Edicao",
         quantidade: DataTypes.INTEGER,
         cotacao: DataTypes.DOUBLE,
         capa: DataTypes.STRING,
-        LivroId: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: Livro, 
-                key: 'id'
-            }
-        }
+
     }
 );
 
