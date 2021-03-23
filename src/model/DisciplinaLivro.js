@@ -25,6 +25,6 @@ const DisciplinaLivro = db.define("DisciplinaLivro",
     }
 );
 
-Disciplina.belongsToMany(Livro, {through:DisciplinaLivro});
-Livro.belongsToMany(Disciplina, {through:DisciplinaLivro})
+Disciplina.belongsToMany(Livro, {through:DisciplinaLivro, as:'livros'});
+Livro.belongsToMany(Disciplina, {through:DisciplinaLivro, as:'disciplinas'})
 module.exports = DisciplinaLivro;
